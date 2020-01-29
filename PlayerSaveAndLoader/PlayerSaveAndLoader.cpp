@@ -2,11 +2,13 @@
 //
 
 #include "pch.h"
+#include "Game.h"
 #include <iostream>
 
-int main()
+void main()
 {
-    std::cout << "Hello World!\n"; 
+	Game game;
+	game.start();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
