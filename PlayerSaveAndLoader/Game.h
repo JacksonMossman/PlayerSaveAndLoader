@@ -9,25 +9,31 @@ public:
 	void start();
 	void draw();
 
+	
+
 	void AddPlayer(Player x);
 
 
 private:
+
+
 	Player* m_players;
 	
 
-	int getCommand();
+	void getCommand();
 	void save();
 	bool load();
 
 	bool gameover = false;
 
-	int m_playerCount;
+	int m_playerCount =1;
 	
 
 
-	int m_tempPlayerCount;
+	int m_tempPlayerCount =1;
 	Player* m_tempPlayers;
+
+	
 
 };
 
