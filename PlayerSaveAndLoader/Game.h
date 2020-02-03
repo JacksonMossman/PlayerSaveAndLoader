@@ -13,6 +13,13 @@ public:
 
 	void AddPlayer(Player x);
 
+	void bubbleSort();
+
+	void Swap(Player * players, int n, int k);
+
+
+	
+
 
 private:
 
@@ -21,14 +28,20 @@ private:
 	
 
 	void getCommand();
+	void search();
 	void save();
 	bool load();
+
+	int BinarySearch(char * key);
+
+	
+	
 
 	bool gameover = false;
 
 	int m_playerCount =1;
 	
-
+	
 
 	int m_tempPlayerCount =1;
 	Player* m_tempPlayers;
