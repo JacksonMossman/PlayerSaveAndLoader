@@ -91,11 +91,13 @@ void Game::search()
 			if (strcmp(input, "Yes") == 0)
 			{
 				std::cout << "Please Choose a new Name For this Profile " << std::endl;
-				std::cout << "New Name:" << std::endl;;
+				std::cout << "New Name:" << std::endl;
+				std::cin.clear();
 				std::cin >> input;
 				m_players[index].setName(input);
 				std::cout << "Please Choose a new Score For this Profile";
 				std::cout << "New Score:";
+				std::cin.clear();
 				std::cin >> inputint;
 				m_players[index].setScore(inputint);
 				return;
@@ -120,6 +122,7 @@ void Game::search()
 
 			std::cout << "Please Choose a new Score For this Profile" << std::endl;
 			std::cout << "New Score: ";
+			std::cin.clear();
 			std::cin >> inputint;
 
 			Player newplayer(input, inputint);
@@ -198,6 +201,10 @@ bool Game::load()
 	m_playerCount = m_tempPlayerCount;
 	m_players = m_tempPlayers;
 	
+
+	std::cout << "Load Successful press any key to continue" <<std::endl;
+	system("pause");
+	system("CLS");
 	return true;
 }
 
@@ -215,7 +222,7 @@ int Game::BinarySearch(char* key)
 		{
 			return middle;
 		}
-		else if (strcmp(m_players[middle].m_name, key) > 0)
+		if (strcmp(m_players[middle].m_name, key) > 0)
 		{
 			max = middle -1;
 			
@@ -224,7 +231,11 @@ int Game::BinarySearch(char* key)
 		{
 			min = middle + 1;
 		}
-		
+		middle = (min + max) / 2;
+		if (strcmp(m_players[middle].m_name, key) == 0)
+		{
+			return middle;
+		}
 	
 		
 	}
@@ -233,7 +244,7 @@ int Game::BinarySearch(char* key)
 
 void Game::start()
 {
-	//load();
+	load();
 	while (!gameover)
 	{
 		bubbleSort();
@@ -296,13 +307,14 @@ void Game::bubbleSort()
 void Game::Swap(Player* players, int n, int k)
 
 {   
-	char temp[30];
+	Player temp;
 
-	strcpy_s(temp, players[n].m_name);
+	temp = players[n];
+	
 
-	strcpy_s(players[n].m_name, players[k].m_name);
+	players[n] = players[k];
 
-	strcpy_s(players[k].m_name, temp);
+	players[k] = temp;
 
 }
 
