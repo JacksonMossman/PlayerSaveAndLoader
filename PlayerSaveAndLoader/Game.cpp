@@ -40,7 +40,7 @@ void Game::getCommand()
 		//display diffrent avaliable commands
 		std::cout << "Enter a Command"<< std::endl;
 		std::cout << "Search,";
-		std::cout << "Save,";
+		
 		std::cout << "Exit" << std::endl;
 		//Clear the input buffer, ready for player input
 		std::cin.clear();
