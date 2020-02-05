@@ -34,7 +34,7 @@ void Game::getCommand()
 {
 	//Create the input buffer
 	char input[50] = "\0";
-	int inputint = 0;
+	int inputInt = 0;
 	
 
 		//display diffrent avaliable commands
@@ -60,6 +60,7 @@ void Game::getCommand()
 		{
 			search();
 		}	
+		 //invalid input
 		else
 		{
 			std::cout << "Invalid input" << std::endl;
@@ -84,7 +85,7 @@ void Game::search()
 		std::cin >> input;
 		//search current players for name
 		index = BinarySearch(input);
-		//check if name exist
+		//If a matching name is found
 		if (index != -1) {
 			//display the player
 			std::cout << "Name: " << m_players[index].m_name << std::endl;
@@ -106,6 +107,7 @@ void Game::search()
 				std::cout << "New Score:";
 				std::cin.clear();
 				std::cin >> inputint;
+				//set score to score input
 				m_players[index].setScore(inputint);
 				return;
 			}
@@ -121,7 +123,7 @@ void Game::search()
 			}
 		}
 		
-		//generate new player
+		//generate new player if no player was found
 		else
 		{
 			//display new name entered periviously
@@ -168,6 +170,7 @@ void Game::save()
 	out.flush();
 	out.close();
 
+	//display user message
 	std::cout << "Progress has been saved" << std::endl;
 	system("pause");
 	system("CLS");
@@ -198,6 +201,7 @@ bool Game::load()
 	m_tempPlayers = new Player[m_tempPlayerCount];
 	for (int i = 0; i < m_tempPlayerCount; i++) {
 
+		//if player doesnt load properly then delete all loaded players
 		if (m_tempPlayers[i].load(in) == false) {
 			delete[] m_tempPlayers;
 			m_tempPlayers = nullptr;
@@ -208,7 +212,7 @@ bool Game::load()
 		}
 
 	}
-
+	//set players to temp players
 	m_playerCount = m_tempPlayerCount;
 	m_players = m_tempPlayers;
 	
@@ -254,6 +258,7 @@ int Game::BinarySearch(char* key)
 	
 		
 	}
+	//return that this name doesnt exist on current list
 	return -1;
 }
 
@@ -272,6 +277,7 @@ void Game::start()
 		//clear 
 		system("CLS");
 	}
+	//save game
 	save();
 	
 }
@@ -281,7 +287,9 @@ void Game::draw()
 	//draw the list of players
 	for (int i = 0; i < m_playerCount; i++)
 	{
+		//draw name
 		std::cout << "Name: "<< m_players[i].m_name << std::endl;
+		//draw score
 		std::cout << "Score: "<<m_players[i].m_score << std::endl;
 	}
 	
@@ -294,6 +302,7 @@ void Game::AddPlayer(Player x)
 	//copy players over to temp
   	 for (int i = 0; i < m_playerCount; i++)
 	 {
+		
 		temparr[i] = m_players[i];
 	 }
 	 //set last player in temp to added player
@@ -336,11 +345,12 @@ void Game::Swap(Player* players, int n, int k)
 	//set the two players to each other
 	Player temp;
 
+	//set player n to temp
 	temp = players[n];
 	
-
+	//copy player over
 	players[n] = players[k];
-
+	//set k to previous n value
 	players[k] = temp;
 
 }
