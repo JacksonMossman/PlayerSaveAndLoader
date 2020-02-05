@@ -49,12 +49,9 @@ void Game::getCommand()
 		std::cin >> input;
 
 		//save the current game state
-		if (strcmp(input, "save") == 0) {
-			save();
-			return;
-		}
+
 		//exit game
-		else if (strcmp(input, "exit") == 0) {
+		 if (strcmp(input, "exit") == 0) {
 			gameover = true;
 			return;
 		}
@@ -275,6 +272,7 @@ void Game::start()
 		//clear 
 		system("CLS");
 	}
+	save();
 	
 }
 //draw player list
