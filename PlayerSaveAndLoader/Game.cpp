@@ -96,14 +96,9 @@ void Game::search()
 			std::cin >> input;
 			if (strcmp(input, "Yes") == 0)
 			{
-				//change players name
-				std::cout << "Please Choose a new Name For this Profile " << std::endl;
-				std::cout << "New Name:" << std::endl;
-				std::cin.clear();
-				std::cin >> input;
-				m_players[index].setName(input);
+				
 				//get a new score for this profile
-				std::cout << "Please Choose a new Score For this Profile";
+				std::cout << "Please Choose a new Score For this Profile" <<std::endl;
 				std::cout << "New Score:";
 				std::cin.clear();
 				std::cin >> inputint;
